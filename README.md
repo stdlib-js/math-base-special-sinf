@@ -46,7 +46,7 @@ The [sine][sine] function can be expressed as the infinite series
 ```
 
 <!-- <div class="equation" align="center" data-raw-text="\sin(x) = \sum_{n=0}^{\infty} \frac{(-1)^n}{(2n+1)!} x^{2n+1} = x - \frac{x^3}{3!} + \frac{x^5}{5!} - \cdots" data-equation="eq:sine_function">
-    <img src="https://cdn.jsdelivr.net/gh/stdlib-js/stdlib@e35241e609f4ea7a5a1e367022755bde30d3119f/lib/node_modules/@stdlib/math/base/special/sinf/docs/img/equation_sine_function.svg" alt="Sine function Taylor series expansion">
+    <img src="https://cdn.jsdelivr.net/gh/stdlib-js/stdlib@85f48534ef6908bbcd982d48f1c5fbea3fb7aafd/lib/node_modules/@stdlib/math/base/special/sinf/docs/img/equation_sine_function.svg" alt="Sine function Taylor series expansion">
     <br>
 </div> -->
 
@@ -56,38 +56,32 @@ The [sine][sine] function can be expressed as the infinite series
 
 <!-- /.intro -->
 
+<section class="installation">
 
+## Installation
+
+```bash
+npm install @stdlib/math-base-special-sinf
+```
+
+Alternatively,
+
+-   To load the package in a website via a `script` tag without installation and bundlers, use the [ES Module][es-module] available on the [`esm`][esm-url] branch (see [README][esm-readme]).
+-   If you are using Deno, visit the [`deno`][deno-url] branch (see [README][deno-readme] for usage intructions).
+-   For use in Observable, or in browser/node environments, use the [Universal Module Definition (UMD)][umd] build available on the [`umd`][umd-url] branch (see [README][umd-readme]).
+
+The [branches.md][branches-url] file summarizes the available branches and displays a diagram illustrating their relationships.
+
+To view installation and usage instructions specific to each branch build, be sure to explicitly navigate to the respective README files on each branch, as linked to above.
+
+</section>
 
 <section class="usage">
 
 ## Usage
 
-To use in Observable,
-
 ```javascript
-sinf = require( 'https://cdn.jsdelivr.net/gh/stdlib-js/math-base-special-sinf@umd/browser.js' )
-```
-
-To vendor stdlib functionality and avoid installing dependency trees for Node.js, you can use the UMD server build:
-
-```javascript
-var sinf = require( 'path/to/vendor/umd/math-base-special-sinf/index.js' )
-```
-
-To include the bundle in a webpage,
-
-```html
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/math-base-special-sinf@umd/browser.js"></script>
-```
-
-If no recognized module system is present, access bundle contents via the global scope:
-
-```html
-<script type="text/javascript">
-(function () {
-    window.sinf;
-})();
-</script>
+var sinf = require( '@stdlib/math-base-special-sinf' );
 ```
 
 #### sinf( x )
@@ -115,16 +109,11 @@ v = sinf( -3.141592653589793/6.0 );
 
 <!-- eslint no-undef: "error" -->
 
-```html
-<!DOCTYPE html>
-<html lang="en">
-<body>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/random-array-uniform@umd/browser.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/console-log-each-map@umd/browser.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/constants-float32-two-pi@umd/browser.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/math-base-special-sinf@umd/browser.js"></script>
-<script type="text/javascript">
-(function () {
+```javascript
+var uniform = require( '@stdlib/random-array-uniform' );
+var logEachMap = require( '@stdlib/console-log-each-map' );
+var TWO_PI = require( '@stdlib/constants-float32-two-pi' );
+var sinf = require( '@stdlib/math-base-special-sinf' );
 
 var opts = {
     'dtype': 'float32'
@@ -132,11 +121,6 @@ var opts = {
 var x = uniform( 100, 0.0, TWO_PI, opts );
 
 logEachMap( 'sinf(%0.4f) = %0.4f', x, sinf );
-
-})();
-</script>
-</body>
-</html>
 ```
 
 </section>
@@ -145,7 +129,88 @@ logEachMap( 'sinf(%0.4f) = %0.4f', x, sinf );
 
 <!-- C interface documentation. -->
 
+* * *
 
+<section class="c">
+
+## C APIs
+
+<!-- Section to include introductory text. Make sure to keep an empty line after the intro `section` element and another before the `/section` close. -->
+
+<section class="intro">
+
+</section>
+
+<!-- /.intro -->
+
+<!-- C usage documentation. -->
+
+<section class="usage">
+
+### Usage
+
+```c
+#include "stdlib/math/base/special/sinf.h"
+```
+
+#### stdlib_base_sinf( x )
+
+Computes the [sine][sine] of a single-precision floating-point number (in radians).
+
+```c
+float y = stdlib_base_sinf( 3.141592653589793f / 2.0f );
+// returns ~1.0f
+```
+
+The function accepts the following arguments:
+
+-   **x**: `[in] float` input value.
+
+```c
+float stdlib_base_sinf( const float x );
+```
+
+</section>
+
+<!-- /.usage -->
+
+<!-- C API usage notes. Make sure to keep an empty line after the `section` element and another before the `/section` close. -->
+
+<section class="notes">
+
+</section>
+
+<!-- /.notes -->
+
+<!-- C API usage examples. -->
+
+<section class="examples">
+
+### Examples
+
+```c
+#include "stdlib/math/base/special/sinf.h"
+#include <stdio.h>
+
+int main( void ) {
+    const float x[] = { 0.0f, 0.523f, 0.785f, 1.047f, 3.14f };
+
+    float y;
+    int i;
+    for ( i = 0; i < 5; i++ ) {
+        y = stdlib_base_sinf( x[ i ] );
+        printf( "sinf(%f) = %f\n", x[ i ], y );
+    }
+}
+```
+
+</section>
+
+<!-- /.examples -->
+
+</section>
+
+<!-- /.c -->
 
 <!-- Section for related `stdlib` packages. Do not manually edit this section, as it is automatically populated. -->
 
